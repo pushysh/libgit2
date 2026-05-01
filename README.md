@@ -1,4 +1,4 @@
-# pushysh/libgit2
+# libgit2
 
 Build-and-publish repo for the `libgit2.xcframework` consumed by the Pushy
 macOS app via Swift Package Manager.
