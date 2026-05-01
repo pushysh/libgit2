@@ -42,10 +42,15 @@ fetch_tarball() {
 
 # ---------------------------------------------------------------------------
 # mbedTLS — crypto backend for libssh2
+#
+# mbedTLS's CMake configuration depends on a `framework/` git submodule that
+# is not bundled in the auto-generated GitHub archive tarball. Clone with
+# --recursive instead.
 # ---------------------------------------------------------------------------
 MBEDTLS_SRC="${WORK_DIR}/src/mbedtls"
-fetch_tarball \
-    "https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/mbedtls-${MBEDTLS_VERSION}.tar.gz" \
+git clone --depth=1 --recursive \
+    --branch "mbedtls-${MBEDTLS_VERSION}" \
+    https://github.com/Mbed-TLS/mbedtls.git \
     "${MBEDTLS_SRC}"
 
 cmake \
